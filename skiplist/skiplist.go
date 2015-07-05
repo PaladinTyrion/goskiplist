@@ -394,7 +394,7 @@ func (s *SkipList) getPath(current *node, update []*node, key interface{}) *node
 	depth := len(current.forward) - 1
 
 	for i := depth; i >= 0; i-- {
-		for current.forward[i] != nil && s.lessThan(current.forward[i].key, key) {
+		if current.forward[i] != nil && s.lessThan(current.forward[i].key, key) {
 			current = current.forward[i]
 		}
 		if update != nil {
